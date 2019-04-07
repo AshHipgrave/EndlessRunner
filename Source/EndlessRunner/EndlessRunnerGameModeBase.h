@@ -14,4 +14,6 @@ class ENDLESSRUNNER_API AEndlessRunnerGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+public:
+	AEndlessRunnerGameModeBase();
 };
