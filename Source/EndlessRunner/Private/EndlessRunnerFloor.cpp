@@ -5,7 +5,6 @@
 #include "Components/ArrowComponent.h"
 #include "Components/StaticMeshComponent.h"
 
-// Sets default values
 AEndlessRunnerFloor::AEndlessRunnerFloor()
 {
 	SceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("SceneComponent"));
@@ -20,10 +19,3 @@ AEndlessRunnerFloor::AEndlessRunnerFloor()
 	AttachComponent = CreateDefaultSubobject<UArrowComponent>(TEXT("AttachComponent"));
 	AttachComponent->SetupAttachment(SceneComponent);
 }
-
-// Called when the game starts or when spawned
-void AEndlessRunnerFloor::BeginPlay()
-{
-	Super::BeginPlay();
-}
-

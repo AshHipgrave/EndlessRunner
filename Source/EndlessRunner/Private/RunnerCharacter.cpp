@@ -47,7 +47,7 @@ void ARunnerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	AddMovementInput(FVector(0.f, -1.f, 0.f), 1.0f);
+	AddMovementInput(FVector(1.f, 0.f, 0.f), 1.0f);
 }
 
 void ARunnerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
