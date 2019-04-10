@@ -16,4 +16,11 @@ class ENDLESSRUNNER_API AEndlessRunnerGameModeBase : public AGameModeBase
 	
 public:
 	AEndlessRunnerGameModeBase();
+
+	virtual void BeginPlay() override;
+
+	void CreateFloorTile();
+
+private:
+	FTransform NextSpawnLocation;
 };
