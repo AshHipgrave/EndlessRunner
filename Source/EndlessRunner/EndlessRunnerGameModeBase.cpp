@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright 2019 Ashley Hipgrave. All rights reserved.
 
 #include "EndlessRunnerGameModeBase.h"
 #include "RunnerCharacter.h"
@@ -21,7 +21,10 @@ void AEndlessRunnerGameModeBase::BeginPlay()
 	Super::BeginPlay();
 
 	for (int i = 0; i < 5; i++)
+	{
+
 		CreateFloorTile();
+	}
 }
 
 void AEndlessRunnerGameModeBase::CreateFloorTile()
