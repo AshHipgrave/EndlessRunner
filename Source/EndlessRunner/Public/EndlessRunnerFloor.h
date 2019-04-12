@@ -20,6 +20,11 @@ public:
 	// Sets default values for this actor's properties
 	AEndlessRunnerFloor();
 
+protected:
+
+	UFUNCTION()
+	void HandleEdgeBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
 public:
 
 	/** Root component for attaching floor components together */
@@ -39,5 +44,5 @@ public:
 	UBoxComponent* EdgeCollisionComponent;
 
 public:
-	FTransform GetAttachTransform() const;
+	FVector GetAttachLocation() const;
 };

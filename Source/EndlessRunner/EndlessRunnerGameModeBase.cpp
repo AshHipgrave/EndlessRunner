@@ -20,17 +20,12 @@ void AEndlessRunnerGameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
 
-	FVector Location(0.f, 0.f, 0.f);
-	FRotator Rotation(0.f, 0.f, 0.f);
-	FActorSpawnParameters SpawnInfo;
-
-	AEndlessRunnerFloor* Floor = GetWorld()->SpawnActor<AEndlessRunnerFloor>(Location, Rotation, SpawnInfo);
-	NextSpawnLocation = Floor->GetAttachTransform();
+	for (int i = 0; i < 5; i++)
+		CreateFloorTile();
 }
 
 void AEndlessRunnerGameModeBase::CreateFloorTile()
 {
-	//TODO:
-	//AEndlessRunnerFloor* Floor = GetWorld()->SpawnActor<AEndlessRunnerFloor>(GetClass(), NextSpawnLocation);
-	//NextSpawnLocation = Floor->GetAttachTransform();
+	AEndlessRunnerFloor* FloorTile = GetWorld()->SpawnActor<AEndlessRunnerFloor>(NextSpawnLocation, FRotator::ZeroRotator);
+	NextSpawnLocation = FloorTile->GetAttachLocation();
 }

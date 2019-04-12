@@ -22,5 +22,5 @@ public:
 	void CreateFloorTile();
 
 private:
-	FTransform NextSpawnLocation;
+	FVector NextSpawnLocation = FVector::ZeroVector;
 };
