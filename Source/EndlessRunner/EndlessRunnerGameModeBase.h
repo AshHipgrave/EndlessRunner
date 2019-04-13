@@ -21,6 +21,8 @@ public:
 
 	void CreateFloorTile();
 
+	void NotifyPlayerObstacleCollision();
+
 private:
-	FVector NextSpawnLocation = FVector::ZeroVector;
+	FVector NextSpawnLocation = FVector(300.0f, 0.0f, 0.0f);
 };

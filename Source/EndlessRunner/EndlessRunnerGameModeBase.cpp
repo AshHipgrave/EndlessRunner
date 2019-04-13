@@ -30,8 +30,17 @@ void AEndlessRunnerGameModeBase::CreateFloorTile()
 	AEndlessRunnerFloor* FloorTile = GetWorld()->SpawnActor<AEndlessRunnerFloor>(NextSpawnLocation, FRotator::ZeroRotator);
 	NextSpawnLocation = FloorTile->GetAttachLocation();
 
-	if (FMath::RandRange(0, 5) == 0)
+	if (FMath::RandRange(0, 4) == 0)
 	{
 		NextSpawnLocation.X += 350.f;
 	}
+	else if (FMath::RandRange(0, 4) == 1)
+	{
+		FloorTile->SpawnObstacle();
+	}
+}
+
+void AEndlessRunnerGameModeBase::NotifyPlayerObstacleCollision()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Game Over!"));
 }

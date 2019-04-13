@@ -10,20 +10,23 @@ class UBoxComponent;
 class UArrowComponent;
 class USceneComponent;
 class UStaticMeshComponent;
+class UFloorObstacleComponent;
 
 UCLASS()
 class ENDLESSRUNNER_API AEndlessRunnerFloor : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
-	// Sets default values for this actor's properties
+public:
 	AEndlessRunnerFloor();
 
 protected:
 
 	UFUNCTION()
 	void HandleEdgeBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+	void HandleObstacleComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 public:
 
@@ -43,6 +46,15 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UBoxComponent* EdgeCollisionComponent;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UStaticMeshComponent* ObstacleMeshComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UBoxComponent* ObstacleCollisionComponent;
+
 public:
+	UFUNCTION()
+	void SpawnObstacle();
+
 	FVector GetAttachLocation() const;
 };
