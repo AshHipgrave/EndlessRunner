@@ -6,6 +6,7 @@
 #include "Engine/World.h"
 #include "EndlessRunnerFloor.h"
 #include "Math/UnrealMathUtility.h"
+#include "Kismet/GameplayStatics.h"
 
 AEndlessRunnerGameModeBase::AEndlessRunnerGameModeBase()
 {
@@ -42,5 +43,13 @@ void AEndlessRunnerGameModeBase::CreateFloorTile()
 
 void AEndlessRunnerGameModeBase::NotifyPlayerObstacleCollision()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Game Over!"));
+	// Stop calculating score
+	// End the game
+
+	ARunnerCharacter* PlayerCharacter = Cast<ARunnerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+
+	if (PlayerCharacter)
+	{
+		PlayerCharacter->NotifyObstacleCollision();
+	}
 }

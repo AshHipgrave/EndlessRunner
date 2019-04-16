@@ -47,7 +47,10 @@ void ARunnerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	AddMovementInput(FVector(1.f, 0.f, 0.f), 1.0f);
+	if (!bIsGameOver)
+	{
+		AddMovementInput(FVector(1.f, 0.f, 0.f), 1.0f);
+	}
 }
 
 void ARunnerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -57,6 +60,13 @@ void ARunnerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 	PlayerInputComponent->BindTouch(IE_Pressed, this, &ARunnerCharacter::TouchStarted);
 	PlayerInputComponent->BindTouch(IE_Released, this, &ARunnerCharacter::TouchStopped);
+}
+
+void ARunnerCharacter::NotifyObstacleCollision()
+{
+	bIsGameOver = true;
+
+	//Ragdoll the character off of the edge of the world to kill them
 }
 
 void ARunnerCharacter::TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location)

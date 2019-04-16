@@ -52,20 +52,25 @@ AEndlessRunnerFloor::AEndlessRunnerFloor()
 	if (ObstacleMeshObject.Succeeded())
 	{
 		ObstacleMeshComponent->SetStaticMesh(ObstacleMeshObject.Object);
-		ObstacleMeshComponent->SetWorldScale3D(FVector(0.5f, 0.5f, 0.5f));
-		ObstacleMeshComponent->SetRelativeScale3D(FVector(0.5f, 0.5f, 0.5f));
-		ObstacleMeshComponent->SetRelativeLocation(FVector(0.0f, 0.0f, 100.0f));
+		ObstacleMeshComponent->SetWorldScale3D(FVector(0.25f, 1.0f, 0.25f));
+		ObstacleMeshComponent->SetRelativeScale3D(FVector(0.25f, 1.0f, 0.25f));
+		ObstacleMeshComponent->SetRelativeLocation(FVector(20.0f, 0.0f, 100.0f));
 
 		ObstacleMeshComponent->SetVisibility(false);
 		ObstacleMeshComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+		ObstacleMeshComponent->CanCharacterStepUpOn = ECB_No;
 	}
 
 	ObstacleCollisionComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("ObstacleCollisionComponent"));
 	ObstacleCollisionComponent->SetupAttachment(ObstacleMeshComponent);
+
+	ObstacleCollisionComponent->SetRelativeScale3D(FVector(1.05f, 1.0f, 1.0f));
+	ObstacleCollisionComponent->SetWorldScale3D(FVector(1.05f, 1.05f, 1.05f));
 	
-	ObstacleCollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	ObstacleCollisionComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	ObstacleCollisionComponent->SetCollisionResponseToAllChannels(ECR_Ignore);
-	ObstacleCollisionComponent->SetCollisionResponseToChannel(ECC_Pawn, ECR_MAX);
+	ObstacleCollisionComponent->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
 
 	ObstacleCollisionComponent->OnComponentBeginOverlap.AddDynamic(this, &AEndlessRunnerFloor::HandleObstacleComponentBeginOverlap);
 }
@@ -74,6 +79,8 @@ void AEndlessRunnerFloor::SpawnObstacle()
 {
 	ObstacleMeshComponent->SetVisibility(true);
 	ObstacleMeshComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+
+	ObstacleCollisionComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 }
 
 void AEndlessRunnerFloor::HandleEdgeBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)

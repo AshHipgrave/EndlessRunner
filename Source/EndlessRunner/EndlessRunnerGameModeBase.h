@@ -24,5 +24,5 @@ public:
 	void NotifyPlayerObstacleCollision();
 
 private:
-	FVector NextSpawnLocation = FVector(300.0f, 0.0f, 0.0f);
+	FVector NextSpawnLocation = FVector(600.0f, 0.0f, 0.0f);
 };
