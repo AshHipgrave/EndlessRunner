@@ -31,11 +31,11 @@ void AEndlessRunnerGameModeBase::CreateFloorTile()
 	AEndlessRunnerFloor* FloorTile = GetWorld()->SpawnActor<AEndlessRunnerFloor>(NextSpawnLocation, FRotator::ZeroRotator);
 	NextSpawnLocation = FloorTile->GetAttachLocation();
 
-	if (FMath::RandRange(0, 4) == 0)
+	if (FMath::RandRange(0, 3) == 0)
 	{
 		NextSpawnLocation.X += 350.f;
 	}
-	else if (FMath::RandRange(0, 4) == 1)
+	else if (FMath::RandRange(0, 3) == 1)
 	{
 		FloorTile->SpawnObstacle();
 	}
@@ -43,9 +43,6 @@ void AEndlessRunnerGameModeBase::CreateFloorTile()
 
 void AEndlessRunnerGameModeBase::NotifyPlayerObstacleCollision()
 {
-	// Stop calculating score
-	// End the game
-
 	ARunnerCharacter* PlayerCharacter = Cast<ARunnerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 
 	if (PlayerCharacter)

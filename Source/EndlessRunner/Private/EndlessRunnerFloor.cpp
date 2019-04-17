@@ -7,7 +7,6 @@
 #include "Components/StaticMeshComponent.h"
 #include "Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h"
 
-#include "FloorObstacleComponent.h"
 #include "EndlessRunnerGameModeBase.h"
 
 AEndlessRunnerFloor::AEndlessRunnerFloor()
@@ -66,7 +65,7 @@ AEndlessRunnerFloor::AEndlessRunnerFloor()
 	ObstacleCollisionComponent->SetupAttachment(ObstacleMeshComponent);
 
 	ObstacleCollisionComponent->SetRelativeScale3D(FVector(1.05f, 1.0f, 1.0f));
-	ObstacleCollisionComponent->SetWorldScale3D(FVector(1.05f, 1.05f, 1.05f));
+	ObstacleCollisionComponent->SetWorldScale3D(FVector(1.0f, 1.0f, 1.05f));
 	
 	ObstacleCollisionComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	ObstacleCollisionComponent->SetCollisionResponseToAllChannels(ECR_Ignore);

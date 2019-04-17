@@ -10,7 +10,6 @@ class UBoxComponent;
 class UArrowComponent;
 class USceneComponent;
 class UStaticMeshComponent;
-class UFloorObstacleComponent;
 
 UCLASS()
 class ENDLESSRUNNER_API AEndlessRunnerFloor : public AActor
