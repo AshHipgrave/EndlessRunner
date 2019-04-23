@@ -30,7 +30,10 @@ public:
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
+	void NotifyGameStarted();
+
+	UFUNCTION(BlueprintCallable)
 	void NotifyObstacleCollision();
 
 	FORCEINLINE class UCameraComponent* GetSideViewCameraComponent() const { return SideViewCameraComponent; }
@@ -38,6 +41,6 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 
 private:
-	bool bIsGameOver = false;
+	bool bIsGameRunning = false;
 
 };

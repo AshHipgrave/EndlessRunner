@@ -40,13 +40,3 @@ void AEndlessRunnerGameModeBase::CreateFloorTile()
 		FloorTile->SpawnObstacle();
 	}
 }
-
-void AEndlessRunnerGameModeBase::NotifyPlayerObstacleCollision()
-{
-	ARunnerCharacter* PlayerCharacter = Cast<ARunnerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
-
-	if (PlayerCharacter)
-	{
-		PlayerCharacter->NotifyObstacleCollision();
-	}
-}

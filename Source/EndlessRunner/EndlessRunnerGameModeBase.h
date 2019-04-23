@@ -21,6 +21,7 @@ public:
 
 	void CreateFloorTile();
 
+	UFUNCTION(BlueprintImplementableEvent, Category = "Gameplay")
 	void NotifyPlayerObstacleCollision();
 
 private:

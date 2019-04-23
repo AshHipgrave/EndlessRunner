@@ -6,6 +6,7 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 
 ARunnerCharacter::ARunnerCharacter()
 {
@@ -47,7 +48,7 @@ void ARunnerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (!bIsGameOver)
+	if (bIsGameRunning)
 	{
 		AddMovementInput(FVector(1.f, 0.f, 0.f), 1.0f);
 	}
@@ -62,9 +63,14 @@ void ARunnerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindTouch(IE_Released, this, &ARunnerCharacter::TouchStopped);
 }
 
+void ARunnerCharacter::NotifyGameStarted()
+{
+	bIsGameRunning = true;
+}
+
 void ARunnerCharacter::NotifyObstacleCollision()
 {
-	bIsGameOver = true;
+	bIsGameRunning = false;
 
 	//Ragdoll the character off of the edge of the world to kill them
 }
