@@ -38,7 +38,7 @@ ARunnerCharacter::ARunnerCharacter()
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f); // ...at this rotation rate
 	GetCharacterMovement()->GravityScale = 2.25f;
 	GetCharacterMovement()->AirControl = 0.80f;
-	GetCharacterMovement()->JumpZVelocity = 675.f;
+	GetCharacterMovement()->JumpZVelocity = 630.f;
 	GetCharacterMovement()->GroundFriction = 3.f;
 	GetCharacterMovement()->MaxWalkSpeed = 600.f;
 	GetCharacterMovement()->MaxFlySpeed = 600.f;
@@ -72,7 +72,10 @@ void ARunnerCharacter::NotifyObstacleCollision()
 {
 	bIsGameRunning = false;
 
-	//Ragdoll the character off of the edge of the world to kill them
+	GetMesh()->SetSimulatePhysics(true);
+	GetCapsuleComponent()->SetSimulatePhysics(true);
+
+	AddMovementInput(FVector(3.f, 0.f, 0.f), 1.0f);
 }
 
 void ARunnerCharacter::TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location)
