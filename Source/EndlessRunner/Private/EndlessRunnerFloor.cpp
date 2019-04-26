@@ -64,8 +64,8 @@ AEndlessRunnerFloor::AEndlessRunnerFloor()
 	ObstacleCollisionComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("ObstacleCollisionComponent"));
 	ObstacleCollisionComponent->SetupAttachment(ObstacleMeshComponent);
 
-	ObstacleCollisionComponent->SetRelativeScale3D(FVector(1.05f, 1.0f, 1.0f));
-	ObstacleCollisionComponent->SetWorldScale3D(FVector(1.0f, 1.0f, 1.05f));
+	ObstacleCollisionComponent->SetRelativeScale3D(FVector(1.f, 1.f, 1.f));
+	ObstacleCollisionComponent->SetWorldScale3D(FVector(1.0f, 1.0f, 1.f));
 	
 	ObstacleCollisionComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	ObstacleCollisionComponent->SetCollisionResponseToAllChannels(ECR_Ignore);

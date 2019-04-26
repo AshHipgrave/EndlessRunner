@@ -33,9 +33,9 @@ void AEndlessRunnerGameModeBase::CreateFloorTile()
 
 	if (FMath::RandRange(0, 3) == 0)
 	{
-		NextSpawnLocation.X += 350.f;
+		NextSpawnLocation.X += 315.f;
 	}
-	else if (FMath::RandRange(0, 3) == 1)
+	else if (FMath::RandRange(0, 5) == 0)
 	{
 		FloorTile->SpawnObstacle();
 	}
